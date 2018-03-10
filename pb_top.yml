@@ -1,5 +1,5 @@
 ---
-- hosts: "{{ host_pattern }}"
+- hosts: "{{ inventory_pattern }}"
 
   tasks:
 
