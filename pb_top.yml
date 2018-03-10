@@ -3,12 +3,18 @@
 
   tasks:
 
-    - name: set global facts
+    - name: set global facts process input vars
       include_tasks: tasks_facts.yml
 
     - name: scan for deployment components
       include_tasks: tasks_scan.yml
 
+    - name: match deployment targets
+      include_tasks: tasks_match_targets.yml
+      
+    - name: find ways to deploy
+      imclude_tasks: tasks_deployment_solution.yml
+      
     - name: process deployment components
       include_tasks: tasks_deploy_components.yml
 
