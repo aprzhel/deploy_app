@@ -12,5 +12,5 @@
     - name: process deployment components
       include_tasks: tasks_deploy_components.yml
 
-    - name: notify
+    - name: notify on finish
       include_tasks: tasks_notify_finish.yml
