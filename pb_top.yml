@@ -14,3 +14,4 @@
 
     - name: notify on finish
       include_tasks: tasks_notify_finish.yml
+      when: not((mail_to is undefined) or (mail_to is none) or (mail_to | trim ==''))
