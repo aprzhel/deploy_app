@@ -1,0 +1,16 @@
+---
+- hosts: "{{ host_pattern }}"
+
+  tasks:
+
+    - name: set global facts
+      include_tasks: tasks_facts.yml
+
+    - name: scan for deployment components
+      include_tasks: tasks_scan.yml
+
+    - name: process deployment components
+      include_tasks: tasks_deploy_components.yml
+
+    - name: notify
+      include_tasks: tasks_notify_finish.yml
