@@ -1,0 +1,32 @@
+---
+- name: verify app acronym
+  fail:
+    msg: "Please specify a valid application acronym for var app_acronym"
+  when: not ((app_acronym is undefined) or (app_acronym is none) or (app_acronym | trim ==''))
+
+- name: verify target environment
+  fail:
+    msg: "Please specify a valid target environment (dev|sit|cat|prd...) for var target_env"
+  when: not ((target_env is undefined) or (target_env is none) or (target_env | trim ==''))
+
+- name: verify deployment source package
+  fail:
+    msg: "Please specify location of deployment package manifest for var deploy_manifest"
+  when: not ((deploy_manifest is undefined) or (deploy_manifest is none) or (deploy_manifest | trim ==''))
+
+- name: set mail facts
+  set_fact:
+    mail_host: 'mailrelay.usps.gov'
+    mail_from: 'ecsmiddleware@usps.gov'
+    mail_port: '25'
+
+- name: set temp dirs
+  set_fact:
+    tmp_dir:
+    stage_dir: "{{ ansible_env.HOME }}/tmp/ansible/stage/{{ app_acronym }}"
+
+- name: retrieve deployment package manifest
+  include_tasks: tasks_acquire_manifest.yml
+  vars:
+    manifest_src: "{{ deploy_manifest }}"
+    manifest_dest: "{{ stage_dir }}/deploy_manifest.ini"
