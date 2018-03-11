@@ -1,10 +1,19 @@
 ---
+- hosts: localhost
+  gather_facts: no
+  connection: local
+
+  tasks:
+
+    - name: process tasks_review_input
+      include_tasks: tasks_review_input.yml
+
 - hosts: "{{ inventory_pattern }}"
 
   tasks:
 
-    - name: set global facts and process input vars
-      include_tasks: tasks_init.yml
+    - name: set global facts
+      include_tasks: tasks_facts.yml
       run_once: yes
 
     - name: scan for deployment components

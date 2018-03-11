@@ -1,6 +1,0 @@
----
-- name: verify input
-  include_tasks: tasks_review_input.yml
-
-- name: set global facts
-  include_tasks: tasks_facts.yml
