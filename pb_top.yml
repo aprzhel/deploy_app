@@ -4,11 +4,11 @@
   tasks:
 
     - name: set global facts and process input vars
-      include_tasks: tasks_facts.yml
+      include_tasks: tasks_init.yml
       run_once: yes
 
     - name: scan for deployment components
-      include_tasks: tasks_scan_compomemts.yml
+      include_tasks: tasks_scan_components.yml
       run_once: yes
 
     - name: match deployment targets

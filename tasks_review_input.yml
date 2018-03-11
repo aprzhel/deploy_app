@@ -1,0 +1,10 @@
+---
+- name: verify app acronym
+  fail:
+    msg: "Please specify a valid application acronym for var app_acronym"
+  when: not((app_acronym is undefined) or (app_acronym is none) or (app_acronym | trim ==''))
+
+- name: verify target environment
+  fail:
+    msg: "Please specify a valid target environment (dev|sit|cat|prd...) for var target_env"
+  when: not((target_env is undefined) or (target_env is none) or (target_env | trim ==''))
