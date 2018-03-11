@@ -3,7 +3,7 @@
 
   tasks:
 
-    - name: set facts, verify inpu
+    - name: set facts, verify input
       include_tasks: tasks_init.yml
       run_once: yes
 
